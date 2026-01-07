@@ -1,8 +1,9 @@
 export async function onRequest({ env }) {
 
+  // jugadores preseleccionados (Riot ID REAL)
   const players = [
-    { riotId: "NoTGastesTasMute#420", region: "americas" },
-    { riotId: "DAMI#ARG", region: "americas" }
+    { riotId: "DAMI#ARG" },
+    { riotId: "grande y grueso#7518" }
   ];
 
   const ladder = [];
@@ -10,24 +11,25 @@ export async function onRequest({ env }) {
   for (const p of players) {
     const [name, tag] = p.riotId.split("#");
 
-    // 1) account → puuid
+    // 1️⃣ account → puuid
     const accRes = await fetch(
-      `https://${p.region}.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(name)}/${tag}`,
+      `https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${encodeURIComponent(name)}/${tag}`,
       { headers: { "X-Riot-Token": env.RIOT_KEY } }
     );
-
     if (!accRes.ok) continue;
+
     const account = await accRes.json();
 
-    // 2) summoner
+    // 2️⃣ summoner
     const sumRes = await fetch(
       `https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${account.puuid}`,
       { headers: { "X-Riot-Token": env.RIOT_KEY } }
     );
+    if (!sumRes.ok) continue;
 
     const summoner = await sumRes.json();
 
-    // 3) rank
+    // 3️⃣ ranked
     const rankRes = await fetch(
       `https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}`,
       { headers: { "X-Riot-Token": env.RIOT_KEY } }
@@ -44,9 +46,12 @@ export async function onRequest({ env }) {
       tier: soloQ?.tier ?? "UNRANKED",
       lp: soloQ?.leaguePoints ?? 0
     });
+  }
+
+  ladder.sort((a, b) => b.lp - a.lp);
 
   return new Response(JSON.stringify(ladder), {
     headers: { "Content-Type": "application/json" }
   });
-
 }
+
