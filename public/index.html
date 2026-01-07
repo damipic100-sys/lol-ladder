@@ -51,15 +51,34 @@ li {
 <script>
 async function load() {
   ladder.innerHTML = "cargando...";
-  const r = await fetch("/api/ladder");
-  const data = await r.json();
 
-  ladder.innerHTML = "";
-  data.forEach(p => {
-    ladder.innerHTML +=
-      `<li>${p.name} — ${p.tier} (${p.lp} LP)</li>`;
-  });
+  try {
+    const r = await fetch("/api/ladder");
+
+    if (!r.ok) {
+      ladder.innerHTML = "error API (" + r.status + ")";
+      return;
+    }
+
+    const data = await r.json();
+
+    if (data.length === 0) {
+      ladder.innerHTML = "sin jugadores";
+      return;
+    }
+
+    ladder.innerHTML = "";
+    data.forEach(p => {
+      ladder.innerHTML +=
+        `<li>${p.name} — ${p.tier} (${p.lp} LP)</li>`;
+    });
+
+  } catch (e) {
+    ladder.innerHTML = "error de red";
+    console.error(e);
+  }
 }
 </script>
+
 </body>
 </html>
