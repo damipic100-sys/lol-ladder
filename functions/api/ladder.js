@@ -5,9 +5,7 @@ export async function onRequest({ env }) {
   }
 
   const players = [
-    { riotId: "DAMI#ARG" },
-    { riotId: "NoTGastesTasMute#420" },
-    { riotId: "grande y grueso#7518" }
+    { riotId: "DAMI#ARG" }
   ];
 
   const ladder = [];
