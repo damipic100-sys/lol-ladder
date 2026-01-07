@@ -4,40 +4,45 @@ export async function onRequest({ env }) {
     return new Response("NO RIOT KEY", { status: 500 });
   }
 
-  // 🔴 poné la región REAL de cada uno
+  const headers = {
+    "X-Riot-Token": env.RIOT_KEY,
+    "User-Agent": "lol-ladder/1.0 (contact: damipic100@gmail.com)"
+  };
+
   const players = [
-    { name: "grande y grueso", tag: "7517", lolRegion: "la2" },
-    { name: "DAMI", tag: "ARG",  lolRegion: "la2" }, 
-    { name: "FernecitoConCoca", tag: "ARG",  lolRegion: "la2" }  
+    { name: "DAMI", tag: "ARG", region: "la2" },
+    { name: "FernecitoConCoca", tag: "ARG",  region: "la2" },
+    { name: "lushoto", tag: "uwu",  region: "la2" }
   ];
 
   const ladder = [];
 
   for (const p of players) {
     try {
-      // account (SIEMPRE americas)
+      //  account 
       const accRes = await fetch(
         `https://americas.api.riotgames.com/riot/account/v1/accounts/by-game-name/${encodeURIComponent(p.name)}/${encodeURIComponent(p.tag)}`,
-        { headers: { "X-Riot-Token": env.RIOT_KEY } }
+        { headers }
       );
       if (!accRes.ok) continue;
       const account = await accRes.json();
 
-      // summoner (REGIÓN CORRECTA)
+      // summoner 
       const sumRes = await fetch(
-        `https://${p.lolRegion}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${account.puuid}`,
-        { headers: { "X-Riot-Token": env.RIOT_KEY } }
+        `https://${p.region}.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${account.puuid}`,
+        { headers }
       );
       if (!sumRes.ok) continue;
       const summoner = await sumRes.json();
 
-      // ranked
+      //  ranked
       const rankRes = await fetch(
-        `https://${p.lolRegion}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}`,
-        { headers: { "X-Riot-Token": env.RIOT_KEY } }
+        `https://${p.region}.api.riotgames.com/lol/league/v4/entries/by-summoner/${summoner.id}`,
+        { headers }
       );
-      const ranks = await rankRes.json();
+      if (!rankRes.ok) continue;
 
+      const ranks = await rankRes.json();
       const soloQ = ranks.find(r => r.queueType === "RANKED_SOLO_5x5");
 
       ladder.push({
