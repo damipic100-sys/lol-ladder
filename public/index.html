@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8" />
-<title>Ladder LoL</title>
+<meta charset="UTF-8">
+<title>LA FOKIN LADDER</title>
 <style>
-  body {
-    font-family: system-ui, sans-serif;
-    background: #0f172a;
-    color: #e5e7eb;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
-  }
-  .card {
-    background: #020617;
-    padding: 24px;
-    border-radius: 12px;
-    width: 360px;
-  }
-  h1 {
-    margin: 0 0 16px;
-    text-align: center;
-  }
-  button {
-    width: 100%;
-    padding: 10px;
-    border: 0;
-    border-radius: 8px;
-    background: #2563eb;
-    color: white;
-    cursor: pointer;
-  }
-  ol {
-    margin-top: 20px;
-    padding-left: 20px;
-  }
-  li {
-    margin-bottom: 8px;
-  }
+body {
+  font-family: system-ui, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+.card {
+  background: #020617;
+  padding: 24px;
+  border-radius: 12px;
+  width: 360px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+ol {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+li {
+  margin-bottom: 8px;
+}
 </style>
 </head>
 
 <body>
-  <div class="card">
-    <h1>Ladder</h1>
-    <button onclick="loadLadder()">Actualizar</button>
-    <ol id="ladder"></ol>
-  </div>
+<div class="card">
+  <h1>Ladder</h1>
+  <button onclick="load()">Actualizar</button>
+  <ol id="ladder"></ol>
+</div>
 
 <script>
-async function loadLadder() {
+async function load() {
   ladder.innerHTML = "cargando...";
-  const res = await fetch("/api/ladder");
-  const data = await res.json();
+  const r = await fetch("/api/ladder");
+  const data = await r.json();
 
   ladder.innerHTML = "";
   data.forEach(p => {
