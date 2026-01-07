@@ -1,8 +1,9 @@
 export async function onRequest({ env }) {
 
   const players = [
-    { name: "Jugador1", region: "LA2" },
-    { name: "Jugador2", region: "LA2" }
+  { "name": "NoTGastesTasMute#420", "region": "LA2" },
+  { "name": "DAMI#ARG", "region": "LA2" },
+  { "name": "grande y grueso#7518", "region": "LA2" }
   ];
 
   const ladder = [];
