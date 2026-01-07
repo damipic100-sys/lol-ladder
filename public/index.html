@@ -63,7 +63,7 @@ async function load() {
     const data = await r.json();
 
     if (data.length === 0) {
-      ladder.innerHTML = "sin jugadores/Error Api";
+      ladder.innerHTML = "Error Api";
       return;
     }
 
