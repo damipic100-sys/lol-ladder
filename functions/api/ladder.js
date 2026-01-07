@@ -6,9 +6,8 @@ export async function onRequest({ env }) {
 
   // Riot IDs EXACTOS (copiados del cliente)
   const players = [
-    { name: "Jugador1", tag: "1234" },
-    { name: "Jugador2", tag: "ARG" },
-    { name: "Jugador3", tag: "LAS" }
+    { name: "DAMI", tag: "ARG" },
+    { name: "grande y grueso", tag: "7518" }
   ];
 
   const ladder = [];
