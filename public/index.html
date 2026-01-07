@@ -1,0 +1,13 @@
+<h1>Ladder</h1>
+<button onclick="load()">Actualizar</button>
+<ol id="ladder"></ol>
+
+<script>
+async function load() {
+  const r = await fetch("/api/ladder");
+  const data = await r.json();
+  ladder.innerHTML = data
+    .map(p => `<li>${p.name} - ${p.tier} (${p.lp} LP)</li>`)
+    .join("");
+}
+</script>
