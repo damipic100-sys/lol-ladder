@@ -6,19 +6,9 @@ export async function onRequest({ env }) {
 
   // Riot IDs EXACTOS (copiados del cliente)
   const players = [
-    { name: "DAMI", tag: "ARG" },
-    { name: "grande y grueso", tag: "7518" },
-export async function onRequest({ env }) {
-
-  if (!env.RIOT_KEY) {
-    return new Response("NO RIOT KEY", { status: 500 });
-  }
-
-  // Riot IDs EXACTOS (copiados del cliente)
-  const players = [
-    { name: "DAMI", tag: "ARG" },
-    { name: "grande y grueso", tag: "7518" },
-    { name: "Lushoto", tag: "uwu" }
+    { name: "Jugador1", tag: "1234" },
+    { name: "Jugador2", tag: "ARG" },
+    { name: "Jugador3", tag: "LAS" }
   ];
 
   const ladder = [];
