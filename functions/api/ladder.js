@@ -5,7 +5,7 @@ export async function onRequest({ env }) {
   }
 
   const headers = {
-    "X-Riot-Token": env.RGAPI-e966c6a3-130b-411a-b419-6dd4d587ed33,
+    "X-Riot-Token": env.RIOT_KEY,
     "User-Agent": "lol-ladder/1.0 (contact: damipic100@gmail.com)"
   };
 
