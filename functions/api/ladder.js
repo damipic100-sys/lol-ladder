@@ -1,22 +1,30 @@
 export async function onRequest({ env }) {
-  const players = await fetch(
-    new URL("../../../data/players.json", import.meta.url)
-  ).then(r => r.json());
+
+  const players = [
+    { name: "Jugador1", region: "LA2" },
+    { name: "Jugador2", region: "LA2" }
+  ];
 
   const ladder = [];
 
   for (const p of players) {
     const base = `${p.region.toLowerCase()}.api.riotgames.com`;
 
-    const summoner = await fetch(
-      `https://${base}/lol/summoner/v4/summoners/by-name/${p.name}`,
+    const summonerRes = await fetch(
+      `https://${base}/lol/summoner/v4/summoners/by-name/${encodeURIComponent(p.name)}`,
       { headers: { "X-Riot-Token": env.RIOT_KEY } }
-    ).then(r => r.json());
+    );
 
-    const rank = await fetch(
+    if (!summonerRes.ok) continue;
+
+    const summoner = await summonerRes.json();
+
+    const rankRes = await fetch(
       `https://${base}/lol/league/v4/entries/by-summoner/${summoner.id}`,
       { headers: { "X-Riot-Token": env.RIOT_KEY } }
-    ).then(r => r.json());
+    );
+
+    const rank = await rankRes.json();
 
     ladder.push({
       name: p.name,
