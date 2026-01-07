@@ -11,7 +11,7 @@ export async function onRequest({ env }) {
 
   const players = [
     { name: "DAMI", tag: "ARG", region: "la2" },
-    { name: "FernecitoConCoca", tag: "ARG",  region: "la2" },
+    { name: "PONPONPON", tag: "GWEN",  region: "la2" },
     { name: "lushoto", tag: "uwu",  region: "la2" }
   ];
 
