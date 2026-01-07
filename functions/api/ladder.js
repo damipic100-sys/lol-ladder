@@ -33,16 +33,20 @@ export async function onRequest({ env }) {
       { headers: { "X-Riot-Token": env.RIOT_KEY } }
     );
 
-const ranks = await rankRes.json();
+    const ranks = await rankRes.json();
 
-const soloQ = ranks.find(
-  r => r.queueType === "RANKED_SOLO_5x5"
-);
+    const soloQ = ranks.find(
+      r => r.queueType === "RANKED_SOLO_5x5"
+    );
 
-ladder.push({
-  name: p.riotId,
-  tier: soloQ?.tier ?? "UNRANKED",
-  lp: soloQ?.leaguePoints ?? 0
-});
+    ladder.push({
+      name: p.riotId,
+      tier: soloQ?.tier ?? "UNRANKED",
+      lp: soloQ?.leaguePoints ?? 0
+    });
+
+  return new Response(JSON.stringify(ladder), {
+    headers: { "Content-Type": "application/json" }
+  });
 
 }
