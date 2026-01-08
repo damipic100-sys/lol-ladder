@@ -6,7 +6,7 @@ export async function onRequest({ env }) {
   };
 
   const url =
-    "https://americas.api.riotgames.com/riot/account/v1/accounts/by-game-name/TU_NOMBRE/TU_TAG";
+    "https://americas.api.riotgames.com/riot/account/v1/accounts/by-game-name/DAMI/ARG";
 
   const res = await fetch(url, { headers });
   const text = await res.text();
