@@ -1,4 +1,3 @@
-const btn = document.getElementById("btn");
 const ladderEl = document.getElementById("ladder");
 
 const tierValue = {
@@ -14,7 +13,7 @@ const tierValue = {
   CHALLENGER: 10
 };
 
-btn.onclick = async () => {
+async function cargarLadder() {
   ladderEl.innerHTML = "<li class='loading'>Cargando...</li>";
 
   try {
@@ -31,7 +30,7 @@ btn.onclick = async () => {
 
     data.forEach((p, i) => {
       const li = document.createElement("li");
-      li.className = "card";
+      li.className = `card ${p.tier.toLowerCase()}`;
       li.innerHTML = `
         <span class="pos">#${i + 1}</span>
         <div class="player">
@@ -45,4 +44,7 @@ btn.onclick = async () => {
   } catch {
     ladderEl.innerHTML = "<li>Error cargando ladder</li>";
   }
-};
+}
+
+// 🔥 carga automática
+cargarLadder();
