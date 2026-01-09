@@ -30,16 +30,28 @@
     "lp": 0
   },
   {
-    "name": "RaviolesConCrema",
-    "tier": "PLATINUM",
-    "rank": "2",
-    "lp": 40
+    "name": "FernecitoConCoca",
+    "tier": "UNRANKED",
+    "rank": "0",
+    "lp": 0
   },
   {
     "name": "Lushoto",
     "tier": "GOLD",
     "rank": "3",
     "lp": 50
+  },
+  {
+    "name": "Aśoka Vardhana",
+    "tier": "UNRANKED",
+    "rank": "0",
+    "lp": 0
+  },
+  {
+    "name": "Aśoka Vardhana",
+    "tier": "GOLD",
+    "rank": "0",
+    "lp": 0
   }
   
   
