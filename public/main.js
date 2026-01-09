@@ -1,6 +1,7 @@
 const ladderEl = document.getElementById("ladder");
 
 const tierValue = {
+  UNRANKED: 0,
   IRON: 1,
   BRONZE: 2,
   SILVER: 3,
