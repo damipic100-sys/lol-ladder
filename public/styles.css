@@ -17,9 +17,8 @@ body {
 }
 
 h1 {
-  margin-bottom: 16px;
-  font-size: 24px;
   text-align: center;
+  margin-bottom: 16px;
 }
 
 button {
@@ -29,13 +28,8 @@ button {
   border-radius: 8px;
   background: #2563eb;
   color: white;
-  font-size: 14px;
   cursor: pointer;
   margin-bottom: 16px;
-}
-
-button:hover {
-  background: #1d4ed8;
 }
 
 ul {
@@ -44,10 +38,37 @@ ul {
   margin: 0;
 }
 
-li {
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: #020617;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 12px;
   margin-bottom: 8px;
+}
+
+.pos {
+  font-weight: bold;
+  color: #94a3b8;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
   font-size: 14px;
+  font-weight: 600;
+}
+
+.rank {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.loading {
+  text-align: center;
+  color: #94a3b8;
 }
