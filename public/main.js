@@ -45,6 +45,24 @@ async function cargarLadder() {
     ladderEl.innerHTML = "<li>Error cargando ladder</li>";
   }
 }
+const countdownEl = document.getElementById("countdown");
+
+function actualizarContador() {
+  const ahora = new Date();
+  const manana = new Date();
+  manana.setHours(24, 0, 0, 0);
+
+  const diff = manana - ahora;
+
+  const h = Math.floor(diff / 1000 / 60 / 60);
+  const m = Math.floor((diff / 1000 / 60) % 60);
+  const s = Math.floor((diff / 1000) % 60);
+
+  countdownEl.textContent = `se actualiza en ${h}h ${m}m ${s}s`;
+}
+
+setInterval(actualizarContador, 1000);
+actualizarContador();
 
 // 🔥 carga automática
 cargarLadder();
