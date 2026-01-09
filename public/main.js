@@ -5,7 +5,7 @@ btn.onclick = async () => {
   ladderEl.innerHTML = "<li>Cargando...</li>";
 
   try {
-    const res = await fetch("/data/ladder.json");
+    const res = await fetch("/ladder.json");
     const data = await res.json();
 
     ladderEl.innerHTML = "";
