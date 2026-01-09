@@ -5,7 +5,12 @@ btn.onclick = async () => {
   ladderEl.innerHTML = "<li>Cargando...</li>";
 
   try {
-    const res = await fetch("/ladder.json");
+    const res = await fetch("./ladder.json");
+
+    if (!res.ok) {
+      throw new Error("HTTP " + res.status);
+    }
+
     const data = await res.json();
 
     ladderEl.innerHTML = "";
@@ -16,7 +21,8 @@ btn.onclick = async () => {
       ladderEl.appendChild(li);
     });
 
-  } catch {
+  } catch (e) {
+    console.error(e);
     ladderEl.innerHTML = "<li>Error cargando ladder</li>";
   }
 };
