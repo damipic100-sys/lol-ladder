@@ -48,11 +48,22 @@
     "lp": 0
   },
   {
-    "name": "Aśoka Vardhana",
-    "tier": "GOLD",
+    "name": "Zeeky",
+    "tier": "UNRANKED",
+    "rank": "0",
+    "lp": 0
+  },
+  {
+    "name": "alejandro magno",
+    "tier": "UNRANKED",
+    "rank": "0",
+    "lp": 0
+  },
+  {
+    "name": "Tobi Soabe",
+    "tier": "UNRANKED",
     "rank": "0",
     "lp": 0
   }
-  
   
 ]
