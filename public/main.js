@@ -47,7 +47,8 @@ async function cargarLadder() {
   }
 }
 
-
+// 🔥 carga automática
+cargarLadder();
 const countdownEl = document.getElementById("countdown");
 
 function actualizarContador() {
@@ -66,5 +67,3 @@ function actualizarContador() {
 
 setInterval(actualizarContador, 1000);
 actualizarContador();
-// 🔥 carga automática
-cargarLadder();
